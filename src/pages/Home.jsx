@@ -19,7 +19,7 @@ const Home = () => {
   useEffect(() => {
     const fetchLatestVisas = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/api/visas?limit=6");
+        const { data } = await axios.get("https://visa-navigator-server-murex.vercel.app/api/visas?limit=6");
         if (Array.isArray(data)) {
           setLatestVisas(data);
         } else {

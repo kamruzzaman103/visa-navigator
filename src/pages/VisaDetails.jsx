@@ -25,7 +25,7 @@ const VisaDetails = () => {
   useEffect(() => {
     const fetchVisaDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/visas/${id}`);
+        const response = await axios.get(`https://visa-navigator-server-murex.vercel.app/api/visas/${id}`);
         setVisa(response.data);
       } catch (error) {
         console.error("Error fetching visa details:", error);

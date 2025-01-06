@@ -18,7 +18,7 @@ const MyVisaApplications = () => {
     } else {
       const fetchMyApplications = async () => {
         try {
-          const response = await axios.get(`http://localhost:5000/api/visa-applications?email=${user.email}`);
+          const response = await axios.get(`https://visa-navigator-server-murex.vercel.app/api/visa-applications?email=${user.email}`);
           setApplications(Array.isArray(response.data) ? response.data : []);
         } catch (error) {
           toast.error("Failed to fetch your applications. Please try again.");
@@ -30,7 +30,7 @@ const MyVisaApplications = () => {
 
   const handleCancel = async (applicationId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/visa-applications/${applicationId}`);
+      await axios.delete(`https://visa-navigator-server-murex.vercel.app/api/visa-applications/${applicationId}`);
       setApplications((prevApps) => prevApps.filter((app) => app._id !== applicationId));
       toast.success("Application cancelled successfully!");
     } catch (error) {

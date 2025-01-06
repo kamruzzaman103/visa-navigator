@@ -35,7 +35,7 @@ const ApplyVisaModal = ({ visa, email, onClose }) => {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:5000/api/visa-applications", formData);
+      await axios.post("https://visa-navigator-server-murex.vercel.app/api/visa-applications", formData);
       toast.success("Visa application submitted successfully!");
       onClose(); // Close the modal
     } catch (error) {

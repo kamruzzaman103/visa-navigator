@@ -25,7 +25,7 @@ const UpdateVisaModal = ({ visa, onClose, onVisaUpdated }) => {
     e.preventDefault();
 
     try {
-      const updatedVisa = await axios.put(`http://localhost:5000/api/visas/${visa._id}`, formData);
+      const updatedVisa = await axios.put(`https://visa-navigator-server-murex.vercel.app/api/visas/${visa._id}`, formData);
       onVisaUpdated(updatedVisa.data);
     } catch (error) {
       toast.error("Failed to update visa. Please try again.");

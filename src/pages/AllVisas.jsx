@@ -115,7 +115,7 @@ const AllVisas = () => {
   useEffect(() => {
     const fetchVisas = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/visas");
+        const response = await axios.get("https://visa-navigator-server-murex.vercel.app/api/visas");
         const visaData = response.data;
         setVisas(visaData);
         setFilteredVisas(visaData);

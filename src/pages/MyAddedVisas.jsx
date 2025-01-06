@@ -23,7 +23,7 @@ const MyAddedVisas = () => {
       const fetchMyVisas = async () => {
         setIsLoading(true);
         try {
-          const response = await axios.get(`http://localhost:5000/api/visas`);
+          const response = await axios.get(`https://visa-navigator-server-murex.vercel.app/api/visas`);
           const userVisas = response.data.filter((visa) => visa.userEmail === user.email);
           setMyVisas(userVisas);
         } catch (error) {
@@ -38,7 +38,7 @@ const MyAddedVisas = () => {
 
   const handleDelete = async (visaId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/visas/${visaId}`);
+      await axios.delete(`https://visa-navigator-server-murex.vercel.app/api/visas/${visaId}`);
       setMyVisas((prevVisas) => prevVisas.filter((visa) => visa._id !== visaId));
       toast.success("Visa deleted successfully!");
     } catch (error) {

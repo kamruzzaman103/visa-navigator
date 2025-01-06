@@ -42,7 +42,7 @@
 //   //   try {
 //   //     // Adjust the API endpoint URL if needed (e.g., for development proxy)
 //   //     const response = await axios.post(
-//   //       "http://localhost:5000/visas", // Replace with your API endpoint
+//   //       "https://visa-navigator-server-murex.vercel.app/visas", // Replace with your API endpoint
 //   //       formData
 //   //     );
 //   //     if (response.status === 201) {
@@ -76,7 +76,7 @@
   
 //       // Send the POST request
 //       const response = await axios.post(
-//         "http://localhost:5000/api/visas", // API endpoint
+//         "https://visa-navigator-server-murex.vercel.app/api/visas", // API endpoint
 //         formData,
 //         config
 //       );
@@ -346,7 +346,7 @@
 
 //     try {
 //       const response = await axios.post(
-//         "http://localhost:5000/api/visas",
+//         "https://visa-navigator-server-murex.vercel.app/api/visas",
 //         visaData,
 //         {
 //           headers: {
@@ -578,7 +578,7 @@
 
 //     try {
 //       const response = await axios.post(
-//         "http://localhost:5000/api/visas",
+//         "https://visa-navigator-server-murex.vercel.app/api/visas",
 //         visaData,
 //         {
 //           headers: {
@@ -820,7 +820,7 @@ const AddVisa = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/visas", // Backend endpoint for adding visa
+        "https://visa-navigator-server-murex.vercel.app/api/visas", // Backend endpoint for adding visa
         visaData,
         {
           headers: {
