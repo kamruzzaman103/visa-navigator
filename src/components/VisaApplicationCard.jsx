@@ -30,7 +30,7 @@ const VisaApplicationCard = ({ application, onCancel }) => {
   };
 
   return (
-    <div className="border rounded shadow p-4">
+    <div className="border rounded-lg shadow p-4">
       <img src={countryImage} alt={country} className="w-full h-40 object-cover rounded" />
       <h2 className="text-lg font-bold mt-4">{country}</h2>
       <p>Visa Type: {visaType}</p>
@@ -51,7 +51,7 @@ const VisaApplicationCard = ({ application, onCancel }) => {
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded p-6 w-96">
+          <div className="bg-white rounded-lg p-6 w-96">
             <h3 className="text-xl font-bold mb-4">Cancel Application</h3>
             <p>Are you sure you want to cancel this application?</p>
             <div className="flex justify-end mt-6 gap-4">

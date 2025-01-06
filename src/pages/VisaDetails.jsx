@@ -52,11 +52,11 @@ const VisaDetails = () => {
   }
 
   return (
-    <div className="container mx-auto py-16">
+    <div className="max-w-sm mx-auto px-2 sm:max-w-xl lg:max-w-2xl lg:px-8 py-16">
       <h1 className="text-3xl font-bold text-center mb-8">Visa Details</h1>
       
 
-      <div className="flex flex-col md:flex-row items-center gap-10">
+      <div className="flex flex-col md:flex-row items-center gap-10 border-2 border-solid p-6 rounded-lg">
         <img
           src={visa.countryImage}
           alt={visa.countryName}
