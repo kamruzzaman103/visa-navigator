@@ -61,7 +61,7 @@ const MyAddedVisas = () => {
   }
 
   return (
-    <div className="max-w-lg mx-auto px-4 sm:max-w-4xl lg:max-w-6xl lg:px-8 py-16">
+    <div className="max-w-sm mx-auto px-4 sm:max-w-4xl lg:max-w-6xl lg:px-8 py-16">
       <h1 className="text-3xl font-bold text-center mb-8">My Added Visas</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
