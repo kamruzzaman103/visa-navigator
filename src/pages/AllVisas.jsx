@@ -103,17 +103,56 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const AllVisas = () => {
+  // const [visas, setVisas] = useState([]);
+  // const [filteredVisas, setFilteredVisas] = useState([]);
+  // const [filter, setFilter] = useState("");
+
+  // const navigate = useNavigate();
+
+  // // Fetch all visas
+  // useEffect(() => {
+  //   const fetchVisas = async () => {
+  //     try {
+  //       const response = await axios.get("https://visa-navigator-server-murex.vercel.app/api/visas");
+  //       const visaData = response.data;
+  //       setVisas(visaData);
+  //       setFilteredVisas(visaData);
+  //     } catch (error) {
+  //       console.error("Error fetching visas:", error);
+  //       toast.error("Failed to fetch visas. Please try again.");
+  //     }
+  //   };
+  //   fetchVisas();
+  // }, []);
+
+  // // Filter visas by type
+  // const handleFilterChange = (e) => {
+  //   const visaType = e.target.value;
+  //   setFilter(visaType);
+
+  //   if (visaType === "") {
+  //     setFilteredVisas(visas);
+  //   } else {
+  //     const filtered = visas.filter((visa) => visa.visaType === visaType);
+  //     setFilteredVisas(filtered);
+  //   }
+  // };
+
+
   const [visas, setVisas] = useState([]);
   const [filteredVisas, setFilteredVisas] = useState([]);
   const [filter, setFilter] = useState("");
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
 
   const navigate = useNavigate();
 
   // Fetch all visas
   useEffect(() => {
     const fetchVisas = async () => {
+      setIsLoading(true); // Start spinner
       try {
         const response = await axios.get("https://visa-navigator-server-murex.vercel.app/api/visas");
         const visaData = response.data;
@@ -122,6 +161,8 @@ const AllVisas = () => {
       } catch (error) {
         console.error("Error fetching visas:", error);
         toast.error("Failed to fetch visas. Please try again.");
+      } finally {
+        setIsLoading(false); // Stop spinner
       }
     };
     fetchVisas();
@@ -140,6 +181,14 @@ const AllVisas = () => {
     }
   };
 
+  // Show spinner while loading
+  if (isLoading) {
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
+  }
   return (
     <div className="container mx-auto py-16">
       <h1 className="text-3xl font-bold text-center mb-8">All Visas</h1>

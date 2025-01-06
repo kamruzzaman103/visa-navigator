@@ -4,10 +4,12 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/AuthContext";
 import VisaApplicationCard from "../components/VisaApplicationCard";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const MyVisaApplications = () => {
   const { user } = useAuth();
   const [applications, setApplications] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
   const [searchTerm, setSearchTerm] = useState("");
 
   const navigate = useNavigate();
@@ -17,11 +19,15 @@ const MyVisaApplications = () => {
       navigate("/login");
     } else {
       const fetchMyApplications = async () => {
+        setIsLoading(true); // Start spinner
         try {
           const response = await axios.get(`https://visa-navigator-server-murex.vercel.app/api/visa-applications?email=${user.email}`);
           setApplications(Array.isArray(response.data) ? response.data : []);
         } catch (error) {
           toast.error("Failed to fetch your applications. Please try again.");
+        }
+        finally {
+          setIsLoading(false); // Stop spinner
         }
       };
       fetchMyApplications();
@@ -48,6 +54,13 @@ const MyVisaApplications = () => {
         );
       })
     : [];
+    if (isLoading) {
+      return (
+        <div>
+          <LoadingSpinner />
+        </div>
+      );
+    }
 
   return (
     <div className="container mx-auto py-16">

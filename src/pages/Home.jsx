@@ -13,11 +13,86 @@ import bannerImage3 from "../assets/3.png";
 import LoadingSpinner from "../components/LoadingSpinner";
 
 const Home = () => {
+  // const [latestVisas, setLatestVisas] = useState([]);
+  // const [isDarkMode, setIsDarkMode] = useState(false); // Track dark mode
+
+  // useEffect(() => {
+  //   const fetchLatestVisas = async () => {
+  //     try {
+  //       const { data } = await axios.get("https://visa-navigator-server-murex.vercel.app/api/visas?limit=6");
+  //       if (Array.isArray(data)) {
+  //         setLatestVisas(data);
+  //       } else {
+  //         console.error("API response is not an array:", data);
+  //         setLatestVisas([]);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching latest visas:", error);
+  //       setLatestVisas([]);
+  //     }
+  //   };
+
+  //   fetchLatestVisas();
+  // }, []);
+  // if (!latestVisas) {
+  //   return <LoadingSpinner/>
+  // }
+
+  // const toggleTheme = () => {
+  //   setIsDarkMode(prev => !prev);
+  //   if (!isDarkMode) {
+  //     document.documentElement.classList.add('dark'); // Add dark class to the root element
+  //   } else {
+  //     document.documentElement.classList.remove('dark'); // Remove dark class to return to light mode
+  //   }
+  // };
+
+  // const [latestVisas, setLatestVisas] = useState([]);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // useEffect(() => {
+  //   const fetchLatestVisas = async () => {
+  //     try {
+  //       const { data } = await axios.get("https://visa-navigator-server-murex.vercel.app/api/visas?limit=6");
+  //       if (Array.isArray(data)) {
+  //         setLatestVisas(data);
+  //       } else {
+  //         console.error("API response is not an array:", data);
+  //         setLatestVisas([]);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching latest visas:", error);
+  //       setLatestVisas([]);
+  //     } finally {
+  //       setIsLoading(false); // Ensure loading state is updated
+  //     }
+  //   };
+
+  //   fetchLatestVisas();
+  // }, []);
+
+  // const toggleTheme = () => {
+  //   document.documentElement.classList.toggle("dark");
+  //   setIsDarkMode((prev) => !prev);
+  // };
+
+  // if (isLoading) {
+  //   return (
+  //     <div>
+  //       <LoadingSpinner />
+  //     </div>
+  //   );
+  // }
+
+
   const [latestVisas, setLatestVisas] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // Spinner state
   const [isDarkMode, setIsDarkMode] = useState(false); // Track dark mode
 
   useEffect(() => {
     const fetchLatestVisas = async () => {
+      setIsLoading(true); // Start loading
       try {
         const { data } = await axios.get("https://visa-navigator-server-murex.vercel.app/api/visas?limit=6");
         if (Array.isArray(data)) {
@@ -29,24 +104,27 @@ const Home = () => {
       } catch (error) {
         console.error("Error fetching latest visas:", error);
         setLatestVisas([]);
+      } finally {
+        setIsLoading(false); // Stop loading
       }
     };
 
     fetchLatestVisas();
   }, []);
-  if (!latestVisas) {
-    return <LoadingSpinner/>
-  }
 
   const toggleTheme = () => {
-    setIsDarkMode(prev => !prev);
-    if (!isDarkMode) {
-      document.documentElement.classList.add('dark'); // Add dark class to the root element
-    } else {
-      document.documentElement.classList.remove('dark'); // Remove dark class to return to light mode
-    }
+    setIsDarkMode((prev) => !prev);
+    document.documentElement.classList.toggle("dark");
   };
 
+  // Show spinner while loading latest visas
+  if (isLoading) {
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
+  }
   return (
     <div>
       {/* Theme Toggle Button */}

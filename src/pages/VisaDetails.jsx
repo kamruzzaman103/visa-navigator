@@ -54,7 +54,7 @@ const VisaDetails = () => {
   return (
     <div className="container mx-auto py-16">
       <h1 className="text-3xl font-bold text-center mb-8">Visa Details</h1>
-      <h1>{user.email}</h1>
+      
 
       <div className="flex flex-col md:flex-row items-center gap-10">
         <img
