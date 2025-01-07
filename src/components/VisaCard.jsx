@@ -1,38 +1,4 @@
 
-
-// const VisaCard = ({ visa, onUpdate, onDelete }) => {
-//   return (
-//     <div className="border rounded-lg p-4">
-//       <img
-//         src={visa.countryImage}
-//         alt={visa.countryName}
-//         className="w-full h-32 object-cover rounded mb-4"
-//       />
-//       <h3 className="text-xl font-semibold mb-2">{visa.countryName}</h3>
-//       <p className="text-gray-700 mb-2">Visa Type: {visa.visaType}</p>
-//       <p className="text-gray-700 mb-2">Processing Time: {visa.processingTime}</p>
-//       <p className="text-gray-700 mb-2">Fee: ${visa.fee}</p>
-//       <p className="text-gray-700 mb-4">Validity: {visa.validity}</p>
-
-//       <div className="flex justify-between">
-//         <button
-//           onClick={onUpdate}
-//           className="bg-yellow-500 text-white py-1 px-4 rounded"
-//         >
-//           Update
-//         </button>
-//         <button
-//           onClick={onDelete}
-//           className="bg-red-500 text-white py-1 px-4 rounded"
-//         >
-//           Delete
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default VisaCard;
 import { useState } from "react";
 
 const VisaCard = ({ visa, onUpdate, onDelete }) => {
